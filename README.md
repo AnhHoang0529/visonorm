@@ -1,6 +1,6 @@
 # 📦 ViSoNorm Toolkit — Vietnamese Text Normalization & Processing
 
-**ViSoNorm** là một toolkit chuyên biệt dành cho **chuẩn hóa và xử lý văn bản tiếng Việt**, được thiết kế tối ưu cho môi trường **NLP** và dễ dàng cài đặt qua **PyPI**. Các tài nguyên (datasets, models) được lưu trữ và quản lý trực tiếp trên **Hugging Face Hub** và **GitHub Releases**.
+**ViSoNorm** is a specialized toolkit for **Vietnamese text normalization and processing**, optimized for **NLP** environments and easily installable via **PyPI**. Resources (datasets, models) are stored and managed directly on **Hugging Face Hub** and **GitHub Releases**.
 
 [![PyPI version](https://badge.fury.io/py/visonorm.svg)](https://badge.fury.io/py/visonorm)
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
@@ -8,46 +8,46 @@
 
 ---
 
-## 🚀 Tính năng chính
+## 🚀 Key Features
 
-### 1. 🔧 **BasicNormalizer** — Chuẩn hóa văn bản cơ bản
+### 1. 🔧 **BasicNormalizer** — Basic Text Normalization
 
-* **Case folding**: chuyển toàn bộ văn bản về lowercase/uppercase/capitalize.
-* **Tone normalization**: chuẩn hóa dấu thanh tiếng Việt.
-* **Basic preprocessing**: loại bỏ khoảng trắng thừa, ký tự đặc biệt, định dạng câu.
+* **Case folding**: convert entire text to lowercase/uppercase/capitalize.
+* **Tone normalization**: normalize Vietnamese tone marks.
+* **Basic preprocessing**: remove extra whitespace, special characters, sentence formatting.
 
-### 2. 😀 **EmojiHandler** — Xử lý emoji
+### 2. 😀 **EmojiHandler** — Emoji Processing
 
-* **Detect emojis**: phát hiện emoji trong văn bản.
-* **Split emoji text**: tách emoji ra khỏi câu.
-* **Remove emojis**: loại bỏ toàn bộ emoji.
+* **Detect emojis**: detect emojis in text.
+* **Split emoji text**: separate emojis from sentences.
+* **Remove emojis**: remove all emojis.
 
-### 3. ✏️ **Lexical Normalization** — Chuẩn hóa văn bản mạng xã hội
+### 3. ✏️ **Lexical Normalization** — Social Media Text Normalization
 
-* **ViSoLexNormalizer**: Chuẩn hóa văn bản sử dụng mô hình deep learning từ HuggingFace.
-* **NswDetector**: Phát hiện từ phi chuẩn (non-standard words).
-* **detect_nsw()**: Hàm tiện ích để phát hiện NSW.
-* **normalize_sentence()**: Hàm tiện ích để chuẩn hóa câu.
+* **ViSoLexNormalizer**: Normalize text using deep learning models from HuggingFace.
+* **NswDetector**: Detect non-standard words (NSW).
+* **detect_nsw()**: Utility function to detect NSW.
+* **normalize_sentence()**: Utility function to normalize sentences.
 
-### 4. 📊 **Resource Management** — Quản lý dữ liệu
+### 4. 📊 **Resource Management** — Dataset Management
 
-* `list_datasets()` — Liệt kê datasets có sẵn.
-* `load_dataset()` — Tải dataset từ GitHub Releases.
-* `get_dataset_info()` — Xem thông tin chi tiết dataset.
+* `list_datasets()` — List available datasets.
+* `load_dataset()` — Load dataset from GitHub Releases.
+* `get_dataset_info()` — View detailed dataset information.
 
-### 5. 🧠 **Task Models** — Mô hình xử lý tác vụ
+### 5. 🧠 **Task Models** — Task Processing Models
 
-* **SpamReviewDetection** — Phát hiện spam.
-* **HateSpeechDetection** — Phát hiện hate speech.
-* **HateSpeechSpanDetection** — Phát hiện span của hate speech.
-* **EmotionRecognition** — Nhận diện cảm xúc.
-* **AspectSentimentAnalysis** — Phân tích sentiment theo từng khía cạnh.
+* **SpamReviewDetection** — Spam detection.
+* **HateSpeechDetection** — Hate speech detection.
+* **HateSpeechSpanDetection** — Hate speech span detection.
+* **EmotionRecognition** — Emotion recognition.
+* **AspectSentimentAnalysis** — Aspect-based sentiment analysis.
 
 ---
 
-## 📥 Cài đặt
+## 📥 Installation
 
-### Cài đặt từ PyPI (Khuyến nghị)
+### Install from PyPI (Recommended)
 
 ```bash
 pip install visonorm
@@ -63,17 +63,17 @@ pip install visonorm
 
 ---
 
-## 📚 Hướng dẫn sử dụng
+## 📚 Usage Guide
 
-### 1. 🔧 BasicNormalizer — Chuẩn hóa văn bản cơ bản
+### 1. 🔧 BasicNormalizer — Basic Text Normalization
 
 ```python
 from visonorm import BasicNormalizer
 
-# Khởi tạo BasicNormalizer
+# Initialize BasicNormalizer
 normalizer = BasicNormalizer()
 
-# Ví dụ văn bản
+# Example text
 text = "Hôm nay tôi rất VUI 😊 và HẠNH PHÚC 🎉!"
 
 # Case folding
@@ -91,7 +91,7 @@ text2 = "Bận xong rồi. Xoã đi :)"
 print(normalizer.tone_normalization(text2))
 # Output: Bận xong rồi. Xõa đi :)
 
-# Basic normalization với các tùy chọn
+# Basic normalization with options
 normalized = normalizer.basic_normalizer(
     text,
     case_folding=True,
@@ -102,7 +102,7 @@ normalized = normalizer.basic_normalizer(
 print(normalized)
 # Output: ['hôm', 'nay', 'tôi', 'rất', 'vui', '😊', 'và', 'hạnh', 'phúc', '🎉', '!']
 
-# Loại bỏ emoji
+# Remove emojis
 normalized_no_emoji = normalizer.basic_normalizer(
     text,
     case_folding=True,
@@ -112,12 +112,12 @@ print(normalized_no_emoji)
 # Output: ['hôm', 'nay', 'tôi', 'rất', 'vui', 'và', 'hạnh', 'phúc', '!']
 ```
 
-### 2. 😊 EmojiHandler — Xử lý emoji
+### 2. 😊 EmojiHandler — Emoji Processing
 
 ```python
 from visonorm import EmojiHandler
 
-# Khởi tạo EmojiHandler
+# Initialize EmojiHandler
 emoji_handler = EmojiHandler()
 
 text = "Hôm nay tôi rất vui 😊🎉😊 và hạnh phúc 🎉!"
@@ -144,21 +144,21 @@ print(f"Text without emojis: {text_no_emoji}")
 # Output: Hôm nay tôi rất vui và hạnh phúc !
 ```
 
-### 3. ✏️ Lexical Normalization — Chuẩn hóa văn bản mạng xã hội
+### 3. ✏️ Lexical Normalization — Social Media Text Normalization
 
-#### Sử dụng ViSoLexNormalizer
+#### Using ViSoLexNormalizer
 
 ```python
 from visonorm import ViSoLexNormalizer
 
-# Khởi tạo với model mặc định (hadung1802/vit5-base-normalizer-mix100)
+# Initialize with default model (visolex/visobert-normalizer-mix100)
 normalizer = ViSoLexNormalizer()
 
-# Hoặc chỉ định model cụ thể từ HuggingFace
-# normalizer = ViSoLexNormalizer(model_repo="hadung1802/visobert-normalizer-mix100")
-# normalizer = ViSoLexNormalizer(model_repo="hadung1802/bartpho-normalizer-mix100")
+# Or specify a specific model from HuggingFace
+# normalizer = ViSoLexNormalizer(model_repo="visolex/visobert-normalizer-mix100")
+# normalizer = ViSoLexNormalizer(model_repo="visolex/bartpho-normalizer-mix100")
 
-# Chuẩn hóa câu
+# Normalize sentence
 input_str = "sv dh gia dinh chua cho di lam :))"
 normalized = normalizer.normalize_sentence(input_str)
 print(f"Original: {input_str}")
@@ -167,7 +167,7 @@ print(f"Normalized: {normalized}")
 # Original: sv dh gia dinh chua cho di lam :))
 # Normalized: sinh viên đại học gia đình chưa cho đi làm :))
 
-# Chuẩn hóa và phát hiện NSW cùng lúc
+# Normalize and detect NSW simultaneously
 nsw_spans, normalized_text = normalizer.normalize_sentence(input_str, detect_nsw=True)
 print(f"Normalized: {normalized_text}")
 print("Detected NSW:")
@@ -184,64 +184,64 @@ for nsw in nsw_spans:
 #   - 'lam' → 'làm' (confidence: 1.0)
 ```
 
-#### Sử dụng NswDetector
+#### Using NswDetector
 
 ```python
 from visonorm import NswDetector
 
-# Khởi tạo detector
+# Initialize detector
 detector = NswDetector()
 
-# Phát hiện NSW
+# Detect NSW
 input_str = "sv dh gia dinh chua cho di lam"
 nsw_spans = detector.detect_nsw(input_str)
 for nsw in nsw_spans:
     print(f"NSW: '{nsw['nsw']}' → '{nsw['prediction']}' (confidence: {nsw['confidence_score']})")
 ```
 
-#### Sử dụng hàm tiện ích
+#### Using Utility Functions
 
 ```python
 from visonorm import detect_nsw, normalize_sentence
 
-# Phát hiện NSW
+# Detect NSW
 nsw_spans = detect_nsw("sv dh gia dinh chua cho di lam")
 
-# Chuẩn hóa câu
+# Normalize sentence
 normalized = normalize_sentence("sv dh gia dinh chua cho di lam")
 
-# Chuẩn hóa và phát hiện NSW
+# Normalize and detect NSW
 nsw_spans, normalized = normalize_sentence("sv dh gia dinh chua cho di lam", detect_nsw=True)
 ```
 
-### 4. 📊 Resource Management — Quản lý dataset
+### 4. 📊 Resource Management — Dataset Management
 
-Các dataset được lưu trữ trên **GitHub Releases** và tự động tải về khi cần.
+Datasets are stored on **GitHub Releases** and automatically downloaded when needed.
 
 ```python
 from visonorm import list_datasets, load_dataset, get_dataset_info
 
-# Liệt kê tất cả datasets có sẵn
+# List all available datasets
 datasets = list_datasets()
 print("Available datasets:")
 for i, dataset in enumerate(datasets, 1):
     print(f"{i}. {dataset}")
 
-# Lấy thông tin chi tiết về một dataset
+# Get detailed information about a dataset
 info = get_dataset_info("ViLexNorm")
 print(f"URL: {info['url']}")
 print(f"Type: {info['type']}")
 
-# Tải dataset (tự động cache)
+# Load dataset (auto-cached)
 df = load_dataset("ViLexNorm")
 print(f"Dataset shape: {df.shape}")
 print(df.head())
 
-# Force download lại dataset
+# Force re-download dataset
 df = load_dataset("ViLexNorm", force_download=True)
 ```
 
-**Các datasets có sẵn:**
+**Available datasets:**
 
 - **ViLexNorm**: Vietnamese Lexical Normalization Dataset
 - **ViHSD**: Vietnamese Hate Speech Detection Dataset
@@ -254,26 +254,26 @@ df = load_dataset("ViLexNorm", force_download=True)
 - **BKEE**: Vietnamese Emotion Recognition Dataset
 - **UIT-ViQuAD**: Vietnamese Question Answering Dataset
 
-### 5. 🧠 Task Models — Mô hình xử lý tác vụ
+### 5. 🧠 Task Models — Task Processing Models
 
-Tất cả các mô hình task được lưu trữ trên **HuggingFace Hub** tại [https://huggingface.co/visolex](https://huggingface.co/visolex).
+All task models are stored on **HuggingFace Hub** at [https://huggingface.co/visolex](https://huggingface.co/visolex).
 
-#### SpamReviewDetection — Phát hiện spam
+#### SpamReviewDetection — Spam Detection
 
 ```python
 from visonorm import SpamReviewDetection
 
-# Xem danh sách các model có sẵn
+# View available models
 models = SpamReviewDetection.list_models()
 print("Available models:", SpamReviewDetection.list_model_names())
 
-# Khởi tạo với model phobert-v1 (binary classification)
+# Initialize with phobert-v1 model (binary classification)
 spam_detector = SpamReviewDetection("phobert-v1")
 
-# Hoặc sử dụng các model khác
+# Or use other models
 # spam_detector = SpamReviewDetection("phobert-v1-multiclass")  # Multiclass model
 
-# Phát hiện spam
+# Detect spam
 text = "Sản phẩm rất tốt, chất lượng cao!"
 result = spam_detector.predict(text)
 print(f"Text: {text}")
@@ -281,113 +281,113 @@ print(f"Result: {result}")
 # Output: Result: Non-spam
 ```
 
-#### HateSpeechDetection — Phát hiện hate speech
+#### HateSpeechDetection — Hate Speech Detection
 
 ```python
 from visonorm import HateSpeechDetection
 
-# Xem danh sách các model có sẵn
+# View available models
 print("Available models:", HateSpeechDetection.list_model_names())
 
-# Khởi tạo detector
+# Initialize detector
 hate_detector = HateSpeechDetection("phobert-v1")
-# Hoặc: HateSpeechDetection("phobert-v2"), HateSpeechDetection("visobert"), etc.
+# Or: HateSpeechDetection("phobert-v2"), HateSpeechDetection("visobert"), etc.
 
-# Phát hiện hate speech
+# Detect hate speech
 text = "Văn bản cần kiểm tra hate speech"
 result = hate_detector.predict(text)
 print(f"Result: {result}")
 # Output: Result: CLEAN
 ```
 
-#### HateSpeechSpanDetection — Phát hiện span của hate speech
+#### HateSpeechSpanDetection — Hate Speech Span Detection
 
 ```python
 from visonorm import HateSpeechSpanDetection
 
-# Xem danh sách các model có sẵn
+# View available models
 print("Available models:", HateSpeechSpanDetection.list_model_names())
 
-# Khởi tạo detector
+# Initialize detector
 hate_span_detector = HateSpeechSpanDetection("phobert-v1")
-# Hoặc: HateSpeechSpanDetection("vihate-t5"), HateSpeechSpanDetection("visobert"), etc.
+# Or: HateSpeechSpanDetection("vihate-t5"), HateSpeechSpanDetection("visobert"), etc.
 
-# Phát hiện span
+# Detect span
 text = "Nói cái lồn gì mà khó nghe"
 result = hate_span_detector.predict(text)
 print(f"Result: {result}")
 # Output: {'tokens': [...], 'text': '...'}
 ```
 
-#### EmotionRecognition — Nhận diện cảm xúc
+#### EmotionRecognition — Emotion Recognition
 
 ```python
 from visonorm import EmotionRecognition
 
-# Xem danh sách các model có sẵn
+# View available models
 print("Available models:", EmotionRecognition.list_model_names())
 
-# Khởi tạo detector
+# Initialize detector
 emotion_detector = EmotionRecognition("phobert-v2")
-# Hoặc: EmotionRecognition("phobert-v1"), EmotionRecognition("visobert"), etc.
+# Or: EmotionRecognition("phobert-v1"), EmotionRecognition("visobert"), etc.
 
-# Nhận diện cảm xúc
+# Recognize emotion
 text = "Tôi rất vui mừng và hạnh phúc!"
 emotion = emotion_detector.predict(text)
 print(f"Emotion: {emotion}")
 # Output: Emotion: Enjoyment
 ```
 
-#### AspectSentimentAnalysis — Phân tích sentiment theo aspect
+#### AspectSentimentAnalysis — Aspect-based Sentiment Analysis
 
 ```python
 from visonorm import AspectSentimentAnalysis
 
-# Xem danh sách các domain có sẵn
+# View available domains
 print("Available domains:", AspectSentimentAnalysis.list_domains())
 
-# Xem danh sách các model cho một domain cụ thể
+# View available models for a specific domain
 print("Models for smartphone:", AspectSentimentAnalysis.list_model_names("smartphone"))
 print("Models for restaurant:", AspectSentimentAnalysis.list_model_names("restaurant"))
 print("Models for hotel:", AspectSentimentAnalysis.list_model_names("hotel"))
 
-# Khởi tạo với domain smartphone và model phobert
+# Initialize with smartphone domain and phobert model
 absa = AspectSentimentAnalysis("smartphone", "phobert")
-# Hoặc sử dụng các model khác: "phobert-v2", "bartpho", "vit5", "visobert", etc.
+# Or use other models: "phobert-v2", "bartpho", "vit5", "visobert", etc.
 
-# Hoặc các domain khác
+# Or other domains
 # absa = AspectSentimentAnalysis("restaurant", "phobert-v1")
 # absa = AspectSentimentAnalysis("hotel", "phobert-v1")
 
-# Phân tích sentiment
+# Analyze sentiment
 text = "Điện thoại có camera rất tốt nhưng pin nhanh hết"
 aspects = absa.predict(text, threshold=0.25)
 print(f"Aspects: {aspects}")
 # Output: [('BATTERY', 'neutral'), ('FEATURES', 'neutral'), ('PERFORMANCE', 'positive'), ...]
 ```
 
-### 6. 🎯 Advanced Usage — Sử dụng nâng cao
+### 6. 🎯 Advanced Usage — Advanced Usage
 
-#### Kết hợp nhiều chức năng
+#### Combining Multiple Functions
 
 ```python
 from visonorm import BasicNormalizer, EmojiHandler, ViSoLexNormalizer
 
 def process_text_advanced(text):
-    """Xử lý văn bản với nhiều bước"""
+    """Process text with multiple steps"""
     print(f"Original text: {text}")
     
-    # Bước 1: Xử lý emoji
+    # Step 1: Emoji processing
     emoji_handler = EmojiHandler()
     emojis = emoji_handler.detect_emoji(text)
     print(f"Detected emojis: {emojis}")
     
-    # Bước 2: Chuẩn hóa cơ bản
+    # Step 2: Basic normalization
     normalizer = BasicNormalizer()
     normalized = normalizer.basic_normalizer(text, case_folding=True)
     print(f"Basic normalized: {normalized}")
     
-    # Bước 3: Chuẩn hóa lexical với deep learning
+    # Step 3: Lexical normalization with deep learning
     lex_normalizer = ViSoLexNormalizer()
     final_normalized = lex_normalizer.normalize_sentence(text)
     print(f"Lexical normalized: {final_normalized}")
@@ -409,19 +409,19 @@ result = process_text_advanced("Hôm nay tôi rất😊 VUI 😊😊 và HẠNH 
 
 ### HuggingFace Hub
 
-Tất cả các mô hình và resources được publish trên HuggingFace Hub:
+All models and resources are published on HuggingFace Hub:
 
 - **Organization**: [https://huggingface.co/visolex](https://huggingface.co/visolex)
-- **Models**: Xem danh sách đầy đủ tại [https://huggingface.co/visolex](https://huggingface.co/visolex)
+- **Models**: View full list at [https://huggingface.co/visolex](https://huggingface.co/visolex)
 
-**Các mô hình normalization có sẵn:**
+**Available normalization models:**
 
-- `visolex/visobert-normalizer-mix100` (mặc định)
+- `visolex/visobert-normalizer-mix100` (default)
 
 
 ### GitHub Releases
 
-Các datasets được lưu trữ dưới dạng GitHub Releases và tự động tải về khi sử dụng:
+Datasets are stored as GitHub Releases and automatically downloaded when used:
 
 - **Repository**: [https://github.com/AnhHoang0529/visonorm](https://github.com/AnhHoang0529/visonorm)
 - **Releases**: [https://github.com/AnhHoang0529/visonorm/releases](https://github.com/AnhHoang0529/visonorm/releases)
@@ -487,13 +487,13 @@ detector.concatenate_nsw_spans(nsw_spans)
 
 ## 🔬 Examples
 
-Xem file [test_toolkit.ipynb](test_toolkit.ipynb) để có các ví dụ chi tiết và đầy đủ hơn.
+See [test_toolkit.ipynb](test_toolkit.ipynb) for more detailed and comprehensive examples.
 
 ---
 
 ## 📝 Citation
 
-Nếu bạn sử dụng ViSoNorm trong nghiên cứu, vui lòng trích dẫn:
+If you use ViSoNorm in your research, please cite:
 
 ```bibtex
 @misc{visonorm2024,
